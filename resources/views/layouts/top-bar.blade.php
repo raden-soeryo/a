@@ -229,7 +229,7 @@
               <ul class="py-1" aria-labelledby="navUserdata">
                 <li>
                   <a
-                    href="#"
+                    href="{{route('profile.index', Auth::user()->id)}}"
                     class="flex items-center py-2 px-3 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-900/20 dark:hover:text-white"
                   >
                     <span
@@ -240,40 +240,19 @@
                   >
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="flex items-center py-2 px-3 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-900/20 dark:hover:text-white"
-                  >
-                    <span
-                      data-lucide="settings"
-                      class="w-4 h-4 inline-block text-slate-800 dark:text-slate-400 me-2"
-                    ></span>
-                    Settings</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="flex items-center py-2 px-3 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-900/20 dark:hover:text-white"
-                  >
-                    <span
-                      data-lucide="dollar-sign"
-                      class="w-4 h-4 inline-block text-slate-800 dark:text-slate-400 me-2"
-                    ></span>
-                    Earnings</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="auth-lockscreen.html"
-                    class="flex items-center py-2 px-3 text-sm text-red-500 hover:bg-gray-50 hover:text-red-600 dark:text-red-500 dark:hover:bg-gray-900/20 dark:hover:text-red-500"
-                  >
-                    <span
-                      data-lucide="power"
-                      class="w-4 h-4 inline-block text-red-500 dark:text-red-500 me-2"
-                    ></span>
-                    Sign out</a
-                  >
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-dropdown-link :href="route('logout')" class="flex items-center py-2 px-3 text-sm text-red-500 hover:bg-gray-50 hover:text-red-600 dark:text-red-500 dark:hover:bg-gray-900/20 dark:hover:text-red-500"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            <span
+                            data-lucide="power"
+                            class="w-4 h-4 inline-block text-red-500 dark:text-red-500 me-2"
+                          ></span>
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </form>
                 </li>
               </ul>
             </div>

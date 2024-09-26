@@ -22,7 +22,7 @@ class HomeController extends Controller
     public function index(){
         $profile = ProfileUser::where('user_id', Auth::user()->id)->with([
             'prodi'
-        ])->get();
+        ])->first();
 
         $user = User::all();
 
